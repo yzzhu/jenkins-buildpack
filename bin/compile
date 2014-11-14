@@ -1,3 +1,9 @@
+#!/usr/bin/env bash
+
+set -e            # fail fast
+set -o pipefail   # don't ignore exit codes when piping output
+set -x          # enable debugging
+
 
 build_dir=$1
 cache_dir=$2
@@ -6,6 +12,13 @@ bp_dir=$(cd $(dirname $0); cd ..; pwd)
 vendor_dir=$build_dir/vendor
 JRE_ARHIVE=jre-1.6.38-linux-amd64.bin
 JRE_ARHIVE_FILE=$bp_dir/files/jre-1.6.38-linux-amd64.bin
+
+# CF Common
+BUILDPACK_PATH=$bp_dir
+export BUILDPACK_PATH
+source $bp_dir/compile-extensions/lib/common
+# END CF Common
+source $bp_dir/bin/common.sh
 
 mkdir -p $vendor_dir
 
