@@ -27,7 +27,7 @@ echo "3"
 
 mkdir -p $vendor_dir
 
-status "Setting environment. build_dir=$1 cache_dir=$2 env_dir=$3 bp_dir=$bp_dir JRE_ARHIVE=$JRE_ARHIVE"
+status "Setting environment. build_dir=$1 cache_dir=$2 bp_dir=$bp_dir JRE_ARHIVE=$JRE_ARHIVE"
 
 
 status "Installing java."
