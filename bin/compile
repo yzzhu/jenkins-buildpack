@@ -8,7 +8,7 @@ echo "1"
 
 build_dir=$1
 cache_dir=$2
-env_dir=$3
+# env_dir=$3
 bp_dir=$(cd $(dirname $0); cd ..; pwd)
 vendor_dir=$build_dir/vendor
 JRE_ARHIVE=jre-1.6.38-linux-amd64.bin
