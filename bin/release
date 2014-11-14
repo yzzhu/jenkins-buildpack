@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# bin/release <build-dir>
+cat << EOF
+addons: []
+config_vars:
+  PATH: $PATH:$PWD/vendor/jre/bin
+default_process_type:
+  web: java -jar jenkins.war --httpPort=-1 --httpsPort=$HTTP_PORT
+EOF
