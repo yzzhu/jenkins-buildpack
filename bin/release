@@ -4,5 +4,5 @@ cat << EOF
 addons: []
 config_vars: []
 default_process_type:
-  web: ./vendor/jre/bin/java -jar jenkins.war --httpPort=-1 --httpsPort=$HTTP_PORT
+  web: ./vendor/jre/bin/java -jar jenkins.war --httpPort=-1 --httpsPort=$PORT
 EOF
