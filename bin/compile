@@ -2,19 +2,14 @@
 
 set -e            # fail fast
 set -o pipefail   # don't ignore exit codes when piping output
-set -x          # enable debugging
-
-echo "1"
+# set -x          # enable debugging
 
 build_dir=$1
 cache_dir=$2
-# env_dir=$3
 bp_dir=$(cd $(dirname $0); cd ..; pwd)
 vendor_dir=$build_dir/vendor
 JRE_ARHIVE=jre-1.6.38-linux-amd64.bin
 JRE_ARHIVE_FILE=$bp_dir/files/jre-1.6.38-linux-amd64.bin
-
-echo "2"
 
 # CF Common
 BUILDPACK_PATH=$bp_dir
@@ -34,8 +29,9 @@ JRE_DIR=$vendor_dir/$(ls -l | tr " " "\n" | grep jre)
 status "JRE_DIR=$JRE_DIR"
 mv $JRE_DIR jre
 
-status "$(ls -la jre)"
-status "Environment: build_dir=$1 cache_dir=$2 bp_dir=$bp_dir JRE_ARHIVE=$JRE_ARHIVE"
+status "Repack jenkins.war"
+cd $build_dir
+zip -q -r jenkins.war * -x "vendor/*"
 
 # Update the PATH
 status "Building runtime environment"
